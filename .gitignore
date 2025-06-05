@@ -1,0 +1,15 @@
+# .gitignore
+
+# Node
+node_modules/
+.env
+
+# React build
+client/build/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
