@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api',
-  withCredentials: true, 
+  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api',
+  withCredentials: true,
   headers: {
-    Authorization: `Bearer ${localStorage.getItem('token')}`, // if needed globally
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
   },
 });
 
@@ -22,9 +22,10 @@ API.interceptors.response.use(
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
-        const res = await axios.get('http://localhost:5000/api/auth/refresh-token', {
-          withCredentials: true
-        });
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api'}/auth/refresh-token`,
+          { withCredentials: true }
+        );
         localStorage.setItem('token', res.data.accessToken);
         originalRequest.headers.Authorization = `Bearer ${res.data.accessToken}`;
         return axios(originalRequest);
