@@ -1,8 +1,8 @@
 // src/components/Hero.jsx
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ORG, SIMP, GET_STARTED } from "../constants/Constants";
 import { useAuth } from "../context/AuthContext";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 export const Hero = () => {
   const { user, setUser } = useAuth();
