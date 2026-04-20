@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const taskRoutes = require('./src/routes/taskRoutes');
-const { notFound, errorHandler } = require('./src/middleware/errorHandler'); // ✅ Import
+const { notFound, errorHandler } = require('./src/middleware/errorHandler');
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./src/routes/authRoutes')
 
@@ -12,7 +12,7 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-  origin: 'http://localhost:3000',  // <-- frontend URL
+  origin: 'http://localhost:3000',
   credentials: true
 }));
 

@@ -5,6 +5,5 @@ const { signup, login, logout, refreshToken } = require('../controllers/authCont
 router.post('/signup', signup);
 router.post('/login', login);
 router.post('/logout', logout);
-router.get('/refresh-token', refreshToken); // Can be POST if preferred
-
+router.get('/refresh-token', refreshToken); 
 module.exports = router;

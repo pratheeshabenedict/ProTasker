@@ -12,5 +12,5 @@ export const login = async (credentials) => {
 
 export const logout = () => {
   localStorage.removeItem('token');
-  // Optionally clear other auth state or call backend logout if implemented
+  
 };

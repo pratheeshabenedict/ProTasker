@@ -1,6 +1,6 @@
 const Task = require('../models/Task');
 
-// Create a new Task
+
 const createTask = async (req, res) => {
   try {
     const { title, description, status } = req.body;
@@ -9,7 +9,7 @@ const createTask = async (req, res) => {
       title,
       description,
       status,
-      user: req.user._id 
+      user: req.user._id
     });
 
     await newTask.save();
@@ -20,17 +20,17 @@ const createTask = async (req, res) => {
 };
 
 
-// Get all tasks
+
 const getAllTasks = async (req, res) => {
   try {
-    const tasks = await Task.find({ user: req.user._id }); 
+    const tasks = await Task.find({ user: req.user._id });
     res.json(tasks);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch tasks' });
   }
 };
 
-// Get a task by ID
+
 const getTaskById = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
@@ -43,14 +43,14 @@ const getTaskById = async (req, res) => {
   }
 };
 
-// Update a task by ID
+
 const updateTask = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
 
     if (!task) return res.status(404).json({ error: 'Task not found' });
 
-    
+
     if (!task.user.equals(req.user._id)) {
       return res.status(403).json({ error: 'Unauthorized access' });
     }
@@ -67,14 +67,14 @@ const updateTask = async (req, res) => {
   }
 };
 
-// Delete a task by ID
+
 const deleteTask = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
 
     if (!task) return res.status(404).json({ error: 'Task not found' });
 
- 
+
     if (!task.user.equals(req.user._id) && req.user.role !== 'admin') {
       return res.status(403).json({ error: 'Unauthorized access' });
     }
@@ -87,7 +87,6 @@ const deleteTask = async (req, res) => {
 };
 
 
-// Export the controller functions
 module.exports = {
   createTask,
   getAllTasks,

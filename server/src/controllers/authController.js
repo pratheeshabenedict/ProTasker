@@ -2,7 +2,7 @@ const User = require('../models/UserSchema');
 const generateTokens = require('../utils/generateTokens');
 const jwt = require('jsonwebtoken');
 
-// ✅ Signup
+
 const signup = async (req, res) => {
   const { name, email, password, role } = req.body;
   try {
@@ -16,7 +16,7 @@ const signup = async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     res.status(201).json({
@@ -33,7 +33,7 @@ const signup = async (req, res) => {
   }
 };
 
-// ✅ Login
+
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -64,7 +64,7 @@ const login = async (req, res) => {
   }
 };
 
-// ✅ Logout
+
 const logout = (req, res) => {
   res.clearCookie('refreshToken', {
     httpOnly: true,

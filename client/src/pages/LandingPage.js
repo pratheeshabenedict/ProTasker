@@ -7,7 +7,7 @@ import { Features } from '../components/Features'
 export const LandingPage = () => {
   return (
     <div>
-        <NavBar />
+      <NavBar />
       <Hero />
       <Features />
       <CTA />

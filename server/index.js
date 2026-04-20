@@ -14,13 +14,13 @@ const startServer = async () => {
       useUnifiedTopology: true,
     });
 
-    console.log(`✅ MongoDB connected: ${conn.connection.host}`);
+    console.log(` MongoDB connected: ${conn.connection.host}`);
 
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(` Server running on http://localhost:${PORT}`);
     });
   } catch (err) {
-    console.error('❌ MongoDB connection FAILED:', err.message);
+    console.error('MongoDB connection FAILED:', err.message);
     process.exit(1); // stop server if DB fails
   }
 };
